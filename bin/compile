@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# based on http://www.genesisbloc.com/deploying-electrum-to-heroku/
+
+BUILD_DIR=$1  
+export PATH=$BUILD_DIR/.heroku/python/bin:$PATH
+
+# Without this, pip will not be found
+ln -s $BUILD_DIR/.heroku /app/  
+ls -al /app/.heroku
+
+echo "-----> Installing electrum"  
+$BUILD_DIR/.heroku/python/bin/pip3 install https://download.electrum.org/3.0.3/Electrum-3.0.3.tar.gz
+
+echo "-----> Electrum has been installed!"  
+touch $1/.heroku/electrumed
+
+
+echo "-----> Wallet Not Configured..."  
