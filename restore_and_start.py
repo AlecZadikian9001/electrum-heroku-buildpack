@@ -8,8 +8,10 @@ seed = os.environ["WALLET_SEED"]
 password = os.environ["WALLET_PASSWORD"]
 name = os.environ["WALLET_NAME"]
 
+# We have to use pexpect here because of the pesky password prompts. Simply piping in the shell won't work.
+
 print("starting daemon...")
-pexpect.spawn("electrum daemon start", timeout=30)
+pexpect.spawn("electrum daemon start")
 time.sleep(1)
 print("daemon started")
 
