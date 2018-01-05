@@ -1,0 +1,5 @@
+export WALLET_SEED="decrease dice tooth achieve witness then fence tortoise about light ramp fresh"
+export WALLET_NAME="testnet2"
+export WALLET_PASSWORD="memes"
+export WALLET_TESTNET="true"
+export PRODUCTION="false"

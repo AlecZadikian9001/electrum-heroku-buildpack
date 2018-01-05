@@ -1,1 +1,1 @@
-worker: python3 restore_and_start.py
+worker: python3 wallet.py --create-default
