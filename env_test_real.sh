@@ -1,5 +1,0 @@
-export WALLET_SEED="vintage trend because rally life equal pyramid illness interest often lottery undo"
-export WALLET_NAME="test_real"
-export WALLET_PASSWORD="memes"
-export WALLET_TESTNET="false"
-export PRODUCTION="false"

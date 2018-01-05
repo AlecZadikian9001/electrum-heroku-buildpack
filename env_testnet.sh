@@ -1,5 +1,0 @@
-export WALLET_SEED="harbor one color reunion spot possible mushroom various hip three secret reflect"
-export WALLET_NAME="testnet"
-export WALLET_PASSWORD="memes"
-export WALLET_TESTNET="true"
-export PRODUCTION="false"
