@@ -35,8 +35,13 @@ class Wallet:
     def create_and_start(self):
         util.debug("Starting and restoring wallet {}".format(self))
         util.rm_file_if_exists(self.fname)
-        util.shell_expect(self._args("electrum daemon start")) # for some reason, shell_blocking won't work here TODO
-        util.sleep(5) # TODO properly check if the daemon finished starting (we just assume here 5 seconds)
+
+        # start daemon # TODO messy; assumes it takes 5 seconds; for some reason shell_blocking won't work
+        util.shell_expect("electrum daemon start")
+        util.sleep(5)
+        util.shell_expect(self._args("electrum daemon start"))
+        util.sleep(5)
+
         util.shell_blocking(self._with_password(self._args("electrum restore -o \"{}\"".format(self.seed))))
         util.shell_blocking(self._args("electrum daemon load_wallet"))
         util.debug("Started and restored wallet {}".format(self))
