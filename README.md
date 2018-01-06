@@ -1,7 +1,7 @@
 A buildpack for running an Electrum wallet in CLI mode, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
 
-Setup (not sure what I'm doing here; ended up actually just copying the repo to my PHP app instead of adding it as a buildpack):
+Setup:
 - Add a `requirements.txt` file to your app root containing the following (used by the Python buildpack):
     - `git+https://github.com/AlecZadikian9001/electrum.git@alecz/dumb_password#egg=electrum`
     - `json-rpc`
