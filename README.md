@@ -1,3 +1,5 @@
+**NOT WORKING YET. I've tested it locally but haven't gotten Heroku to run it yet.**
+
 A buildpack for running an Electrum wallet in CLI mode, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
 
