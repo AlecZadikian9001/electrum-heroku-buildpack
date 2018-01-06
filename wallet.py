@@ -37,7 +37,7 @@ class Wallet:
 
         util.debug("Starting and restoring wallet {}".format(self))
         util.rm_file_if_exists(self.name)
-        util.shell_expect("electrum daemon start")
+        util.shell_expect(self._args("electrum daemon start"))
         util.shell_blocking(self._with_password(self._args("electrum restore -o \"{}\"".format(self.seed))))
         util.shell_blocking(self._args("electrum daemon load_wallet"))
         util.debug("Started and restored wallet {}".format(self))
