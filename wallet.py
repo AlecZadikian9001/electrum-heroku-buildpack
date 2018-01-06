@@ -10,7 +10,8 @@ class Wallet:
     def __init__(self, name, password, seed, testnet=False):
         dirname = "wallets"
         util.ensure_dir(dirname)
-        self.name = dirname + "/" + name
+        self.name = name
+        self.fname = dirname + "/" + name
         self.password = password
         self.seed = seed
         self.testnet = testnet
@@ -26,17 +27,15 @@ class Wallet:
             testnet_str = "--testnet"
         else:
             testnet_str = ""
-        return "{} -w {} {}".format(cmd, self.name, testnet_str)
+        return "{} -w {} {}".format(cmd, self.fname, testnet_str)
 
     def _with_password(self, cmd):
         return "ELECTRUM_PASSWORD={}".format(self.password) + " " + cmd
 
     # should only be called once
     def create_and_start(self):
-        delay_time = 3
-
         util.debug("Starting and restoring wallet {}".format(self))
-        util.rm_file_if_exists(self.name)
+        util.rm_file_if_exists(self.fname)
         util.shell_expect(self._args("electrum daemon start"))
         util.sleep(5) # TODO properly check if the daemon finished starting
         util.shell_blocking(self._with_password(self._args("electrum restore -o \"{}\"".format(self.seed))))
