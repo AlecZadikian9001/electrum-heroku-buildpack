@@ -1,4 +1,3 @@
-import pexpect
 import os
 import time
 import util
@@ -36,8 +35,8 @@ class Wallet:
     def create_and_start(self):
         util.debug("Starting and restoring wallet {}".format(self))
         util.rm_file_if_exists(self.fname)
-        util.shell_expect(self._args("electrum daemon start"))
-        util.sleep(5) # TODO properly check if the daemon finished starting
+        util.shell_expect(self._args("electrum daemon start")) # for some reason, shell_blocking won't work here TODO
+        util.sleep(5) # TODO properly check if the daemon finished starting (we just assume here 5 seconds)
         util.shell_blocking(self._with_password(self._args("electrum restore -o \"{}\"".format(self.seed))))
         util.shell_blocking(self._args("electrum daemon load_wallet"))
         util.debug("Started and restored wallet {}".format(self))

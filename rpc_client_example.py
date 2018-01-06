@@ -22,10 +22,16 @@ def request(method, args=None):
 
 
 def main():
+    # some successful requests
     address = request("create_address")["result"]
     request("pay", [address, 0.0002, 0.0001])
     request("get_address_balance", [address])
     request("get_balance")
+
+    # invalid fee (caught by script; fee > btc)
+    request("pay", [address, 0.0002, 0.0003])
+    # invalid fee (error in electrum; ridiculously high fee)
+    request("pay", [address, 2, 1])
 
 
 if __name__ == "__main__":
