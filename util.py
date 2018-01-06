@@ -1,4 +1,3 @@
-import psycopg2
 import csv
 import sys
 import time
@@ -71,10 +70,6 @@ def assert_error(condition, error_msg):
     if not condition:
         error(error_msg)
 
-def remote():
-    assert "HEROKU_REMOTE" in os.environ
-    return os.environ["HEROKU_REMOTE"]
-
 def shell_expect(cmd):
     sensitive_debug("Running expect shell command: {}".format(cmd))
     child = pexpect.spawn('bash', ['-c', cmd])
@@ -109,39 +104,5 @@ def ensure_dir(dirname):
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
-
-
-class Database:
-
-    def __init__(self):
-        self.url = os.environ["DATABASE_URL"]
-        debug("Opening database connection to url {}".format(self.url))
-        self.connection = psycopg2.connect(self.url)
-        self.cursor = self.connection.cursor()
-
-    def __del__(self):
-        debug("Closing database connection to url {}".format(self.url))
-        self.rollback()
-        self.connection.close()
-
-    def mogrify(self, query, values):
-        return self.cursor.mogrify(query, values).decode("utf8")
-    
-    def execute(self, query, values=None):
-        debug(self.mogrify(query, values))
-        return self.cursor.execute(query, values)
-    
-    def query(self, query, values=None):
-        debug(self.mogrify(query, values))
-        self.cursor.execute(query, values)
-        return self.cursor.fetchall()
-
-    def commit(self):
-        debug("Committing database connection with url {}".format(self.url))
-        self.connection.commit()
-
-    def rollback(self):
-        debug("Rolling back database connection with url {}".format(self.url))
-        self.connection.rollback()
 
 
