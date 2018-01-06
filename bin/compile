@@ -1,20 +1,2 @@
 #!/usr/bin/env bash
-
-# based on http://www.genesisbloc.com/deploying-electrum-to-heroku/
-
-BUILD_DIR=$1  
-export PATH=$BUILD_DIR/.heroku/python/bin:$PATH
-
-# Without this, pip will not be found
-ln -s $BUILD_DIR/.heroku /app/  
-ls -al /app/.heroku
-
-echo "-----> Installing electrum"  
-$BUILD_DIR/.heroku/python/bin/pip3 install --upgrade -e git://github.com/AlecZadikian9001/electrum.git@alecz/dumb_password#egg=electrum
-$BUILD_DIR/.heroku/python/bin/pip3 install json-rpc
-
-echo "-----> Electrum has been installed!"  
-touch $1/.heroku/electrumed
-
-
-echo "-----> Wallet Not Configured..."  
+# nothing to do here...

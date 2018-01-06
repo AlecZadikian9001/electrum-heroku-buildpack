@@ -1,1 +1,1 @@
-worker: python3 wallet.py --createdefault
+worker: python3 rpc_server.py
