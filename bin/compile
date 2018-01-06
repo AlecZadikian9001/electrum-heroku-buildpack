@@ -11,6 +11,7 @@ ls -al /app/.heroku
 
 echo "-----> Installing electrum"  
 $BUILD_DIR/.heroku/python/bin/pip3 install --upgrade -e git://github.com/AlecZadikian9001/electrum.git@alecz/dumb_password#egg=electrum
+$BUILD_DIR/.heroku/python/bin/pip3 install json-rpc
 
 echo "-----> Electrum has been installed!"  
 touch $1/.heroku/electrumed
