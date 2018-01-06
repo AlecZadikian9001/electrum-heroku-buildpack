@@ -1,6 +1,11 @@
 A buildpack for running an Electrum wallet in CLI mode, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
 
+Setup:
+- Add Python buildpack first: `heroku buildpacks:add --index 1 heroku/python`
+- Add a `requirements.txt` file to your app root (can even be empty), or else the Python buildpack will fail.
+- Add this buildpack second: `heroku buildpacks:add --index 2 git://github.com/AlecZadikian9001/electrum-heroku-buildpack`
+
 
 Features:
 - Python 3 (instead of 2 like in the tutorial).
