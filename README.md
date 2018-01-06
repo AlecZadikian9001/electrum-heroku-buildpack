@@ -19,6 +19,3 @@ Flaws/TODO:
 
 
 Use at your own risk. I barely know what I'm doing.
-
-
-No license. I don't expect any donations, but here's my BTC address if you really want to: 1PcFGGC4eXDVNB8TSZmyukbW4NgWSjPVXE
