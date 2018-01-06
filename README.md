@@ -3,8 +3,8 @@ adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-
 
 Setup:
 - Add a `requirements.txt` file to your app root containing the following (used by the Python buildpack):
-    - git+https://github.com/AlecZadikian9001/electrum.git@alecz/dumb_password#egg=electrum
-    - json-rpc
+    - `git+https://github.com/AlecZadikian9001/electrum.git@alecz/dumb_password#egg=electrum`
+    - `json-rpc`
 - Add the official Python 3 buildpack first: `heroku buildpacks:add --index 1 heroku/python`
 - Add this buildpack second: `heroku buildpacks:add --index 2 git://github.com/AlecZadikian9001/electrum-heroku-buildpack`
 - Try it out: `heroku run bash`, and run `electrum --help` inside the shell.
