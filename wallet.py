@@ -42,6 +42,16 @@ class Wallet:
         util.shell_blocking(self._args("electrum daemon load_wallet"))
         util.debug("Started and restored wallet {}".format(self))
 
+    def create_address(self):
+        output = util.shell_blocking(self._args("electrum createnewaddress"))
+        j = json.loads(output)
+        return j
+
+    def get_address_balance(self, address):
+        output = util.shell_blocking(self._args("electrum getaddressbalance {}".format(address)))
+        j = json.loads(output)
+        return j
+
     def get_balance(self):
         output = util.shell_blocking(self._args("electrum getbalance"))
         j = json.loads(output)
