@@ -38,14 +38,14 @@ class Wallet:
         util.debug("Starting and restoring wallet {}".format(self))
         util.rm_file_if_exists(self.name)
         util.shell_expect(self._args("electrum daemon start"))
+        util.sleep(5) # TODO properly check if the daemon finished starting
         util.shell_blocking(self._with_password(self._args("electrum restore -o \"{}\"".format(self.seed))))
         util.shell_blocking(self._args("electrum daemon load_wallet"))
         util.debug("Started and restored wallet {}".format(self))
 
     def create_address(self):
         output = util.shell_blocking(self._args("electrum createnewaddress"))
-        j = json.loads(output)
-        return j
+        return output.strip()
 
     def get_address_balance(self, address):
         output = util.shell_blocking(self._args("electrum getaddressbalance {}".format(address)))
