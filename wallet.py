@@ -75,9 +75,12 @@ class Wallet:
 
 
 def load_default_wallet():
-    name = os.environ["WALLET_NAME"]
-    password = os.environ["WALLET_PASSWORD"]
-    seed = os.environ["WALLET_SEED"]
+    try:
+        name = os.environ["WALLET_NAME"]
+        password = os.environ["WALLET_PASSWORD"]
+        seed = os.environ["WALLET_SEED"]
+    except KeyError:
+        raise Exception("Must set WALLET_NAME, WALLET_PASSWORD, and WALLET_SEED envvars")
     testnet = util.env_bool_override(False, "WALLET_TESTNET")
     wallet = Wallet(name, password, seed, testnet=testnet)
     wallet.create_and_start()
@@ -85,5 +88,12 @@ def load_default_wallet():
 
 
 if __name__ == "__main__":
-    wallet = load_default_wallet()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--createdefault", help="Creates a wallet and initializes its daemon and files based on the environmental variables.", action="store_true")
+    args = parser.parse_args()
+    if args.createdefault:
+        wallet = load_default_wallet()
+        
+    
 

@@ -1,1 +1,1 @@
-worker: python3 wallet.py --create-default
+worker: python3 wallet.py --createdefault
