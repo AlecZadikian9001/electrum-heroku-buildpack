@@ -35,6 +35,7 @@ class Wallet:
     def create_and_start(self):
         util.debug("Starting and restoring wallet {}".format(self))
         util.rm_file_if_exists(self.fname)
+        util.ensure_dir("~/.electrum") # TODO not sure why I have to do this, but it crashes otherwise
 
         # start daemon # TODO messy; assumes it takes 5 seconds; for some reason shell_blocking won't work
         util.shell_expect("electrum daemon start")
