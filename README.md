@@ -5,7 +5,7 @@ adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-
 Features:
 - Python 3 (instead of 2 like in the tutorial).
 - Wallet:
-    - Initializes the entire wallet from a seed at startup (thanks to Electrum), no remote servers required.
+    - Initializes the entire wallet from a seed at startup (thanks to Electrum) and starts the daemons, no remote servers required.
     - Pays to an address.
     - Creates wallet addresses.
     - Checks wallet or address balance.
