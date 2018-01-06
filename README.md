@@ -1,13 +1,21 @@
 A buildpack for hosting an Electrum wallet, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
 
+
 Features:
-- Initializes the entire wallet from a seed at startup (thanks to Electrum), no remote servers required.
-- Pays to an address.
-- Creates wallet addresses.
-- Checks wallet or address balance.
+- Wallet:
+    - Initializes the entire wallet from a seed at startup (thanks to Electrum), no remote servers required.
+    - Pays to an address.
+    - Creates wallet addresses.
+    - Checks wallet or address balance.
+- JSON-RPC server:
+    - Listens for commands for all the above; can support multiple wallets.
 
-TODO:
-- JSON-RPC for communicating with a web server on the same dyno, etc.
 
-Use at your own risk. I somewhat know what I'm doing but am not by any means an expert.
+Flaws/TODO:
+- Slow! There's overhead in starting up the Electrum script for every command. 
+    - But I'm not experienced enough to do things manually using their Python library.
+- "Battle testing" on my own Heroku server.
+
+
+Use at your own risk. I barely know what I'm doing.
