@@ -50,12 +50,12 @@ class Wallet:
     def get_address_balance(self, address):
         output = util.shell_blocking(self._args("electrum getaddressbalance {}".format(address)))
         j = json.loads(output)
-        return j
+        return float(j["confirmed"])
 
     def get_balance(self):
         output = util.shell_blocking(self._args("electrum getbalance"))
         j = json.loads(output)
-        return j
+        return float(j["confirmed"])
 
     def pay(self, address, btc, fee=None):
         util.debug("Paying {} BTC to {}, fee={}".format(btc, address, fee))
