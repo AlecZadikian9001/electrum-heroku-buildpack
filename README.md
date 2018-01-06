@@ -10,7 +10,7 @@ Features:
     - Creates wallet addresses.
     - Checks wallet or address balance.
 - JSON-RPC server:
-    - Listens for commands for all the above; can support multiple wallets.
+    - Listens for commands for the above wallet actions; can support multiple wallets.
 
 
 Flaws/TODO:
