@@ -1,5 +1,6 @@
 A buildpack for running an Electrum wallet in CLI mode, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
+Written in Python 3. 
 
 
 Features:
