@@ -1,3 +1,5 @@
+**This is currently suspended as I test a PHP equivalent. I will make the relevant updates to this after that's done. So I wouldn't recommend using this out of the box just yet.**
+
 A buildpack for running an Electrum wallet in CLI mode, 
 adapted from this older tutorial: http://www.genesisbloc.com/deploying-electrum-to-heroku/
 
